@@ -1,0 +1,26 @@
+package com.sdk.starwars.presentation.core.model
+
+import java.io.Serializable
+import java.util.*
+
+data class AllPlanet(
+    val currentTime: Long,
+    val count: Int,
+    val planets: List<Planet>
+) : Serializable
+
+data class Planet(
+    val name: String,
+    val climate: String,
+    val diameter: String,
+    val created: Date?,
+    val edited: Date?,
+    val gravity: String,
+    val orbitalPeriod: String,
+    val population: String,
+    val rotationPeriod: String,
+    val surfaceWater: String,
+    val terrain: String,
+    val filmsIds: List<Int>,
+    val residentsIds: List<Int>,
+) : Serializable
