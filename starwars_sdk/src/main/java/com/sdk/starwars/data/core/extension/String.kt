@@ -1,6 +1,5 @@
 package com.sdk.starwars.data.core.extension
 
-import com.google.gson.Gson
 import com.sdk.starwars.data.core.Constants.DATE_PATTERN_DEFAULT
 import java.text.SimpleDateFormat
 import java.util.*
