@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'maven-publish'
 }
 
 android {
@@ -53,13 +54,15 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 }
 
-task copyAARRelease(type: Copy) {
-    from    ( [buildDir.absolutePath, 'outputs', 'aar'].join(File.separator) )
-    include ( "${project.name}-release.aar" )
-    into    ( [rootDir.absolutePath, 'final_output', 'release'].join(File.separator) )
-    rename  ("${project.name}-release.aar", "${project.name}.aar")
-}
-
 afterEvaluate {
-    assembleRelease.finalizedBy('copyAARRelease')
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.frqarshed'
+                artifactId = 'starwars-sdk'
+                version = '1.0'
+            }
+        }
+    }
 }
